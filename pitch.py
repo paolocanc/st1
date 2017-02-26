@@ -84,7 +84,7 @@ if __name__ == "__main__":
         help='windows length (ms)')
     optparser.add_option(
         '-f', '--framelength', type='float', default=15,
-        help='frame length (ms)')
+        help='frame shift (ms)')
     optparser.add_option(
         '-d', '--datadir', type='string', default='data',
         help='data folder')
