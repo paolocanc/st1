@@ -17,7 +17,8 @@
 
 \title{1st Assignment: Pitch Estimation and Voicing Detection}
 \author{Speech Technologies\\\\
-José A. R. Fonollosa}
+José A. R. Fonollosa \& Antonio Bonafonte\\
+Universitat Politècnica de Catalunya}
 \date{February 27, 2017}
 
 
@@ -44,7 +45,7 @@ José A. R. Fonollosa}
 
 \maketitle
 
-\comment{The objective of this assignment is the analysis of basic properties of the speech signal: voicing and pith, and to develop accurate estimation algorithms of these parameters.}
+\comment{The objective of this assignment is the analysis of basic properties of the speech signal: voicing and pitch, and to develop accurate estimation algorithms of these parameters.}
 
 
 \subsection*{Assignment}
@@ -64,9 +65,9 @@ José A. R. Fonollosa}
 We have prepared two databases for the development and testing of the pitch estimation and voicing detection algorithms. You can download both of them and the provided initial programs following the links provided on Atenea,
 
 \begin{enumerate}
-\item Test database: FDA-UE (reference frame shift = 15 ms)\\
-The Fundamental Frequency Determination Algorithm Evaluation Database (FDA-UE) was prepared by Paul Bagshaw, Centre for Speech Technology Research at University of Edinburgh. The original database includes audio files (20k, 16bit) and a file with the f0 contour obtained from a second file that contains the output of a laryngograph. This apparatus measures impedance between the sensors that are connected to both sides of the larynx, whereby the contour obtained can be used as a reference. We have made a change in format, so that our audio files are in .wav format (instead of raw format), and f0 contours of reference (.f0ref) are interpolated every \textbf{15 ms}.
-\item Training database. PTDB-TUB (reference frame shift = 10 ms)\\
+\item Test database: \textbf{FDA-UE} (sampling rate = 20KHz, frame shift = 15 ms)\\
+The Fundamental Frequency Determination Algorithm Evaluation Database (FDA-UE) was prepared by Paul Bagshaw, Centre for Speech Technology Research, University of Edinburgh. The original database includes audio files (20k, 16bit) and a file with the f0 contour obtained from a second file that contains the output of a laryngograph. This apparatus measures impedance between the sensors that are connected to both sides of the larynx, whereby the contour obtained can be used as a reference. We have made a change in format, so that our audio files are in .wav format (instead of raw format), and f0 contours of reference (.f0ref) are interpolated every \textbf{15 ms}.
+\item Training database. \textbf{PTDB-TUB} (sampling rate = 48KHz, frame shift = 10 ms)\\
 The Pitch Tracking Database from Graz University of Technology (PTDB-TUG) is a speech database for pitch tracking that provides microphone and laryngograph signals of 20 English native speakers as well as the extracted pitch trajectories as a reference. The subjects had to read 2342 phonetically rich sentences from the existing TIMIT corpus. This text material is available spoken by both, female and male speakers. In total, this database consists of 4720 recorded sentences. All recordings were carried out on-site at the recording studio of the Institute of Broadband Communications at Graz University of Technology. In the version of this database provided for this work, we keep the audio files in the original .wav format with a sampling rate of 48KHz, but we have reformatted the f0 contours of reference (.f0ref) as in the previous database. However, in this database the f0 of reference are computed every \textbf{10 ms} with a window of 32ms.
 \end{enumerate}
 
