@@ -1,5 +1,11 @@
 *.f0
 *.zip
 *.tar
+*.tgz
+*.d
+*.o
+.idea
+.vscode
 snack2.2
 pitch_compare
+data/ptdb_tug

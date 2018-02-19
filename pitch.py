@@ -4,7 +4,7 @@
 Simple pitch estimation
 """
 
-from __future__ import print_function
+from __future__ import print_function, division
 import os
 import numpy as np
 from scipy.io import wavfile
@@ -22,14 +22,14 @@ def autocorr_method(frame, rate):
     frame = frame.astype(np.float)
     frame -= frame.mean()
     amax = np.abs(frame).max()
-    if max > 0:
+    if amax > 0:
         frame /= amax
     else:
         return defvalue
 
     corr = correlate(frame, frame)
     # keep the positive part
-    corr = corr[len(corr)/2:]
+    corr = corr[len(corr)//2:]
 
     # Find the first minimum
     dcorr = np.diff(corr)
@@ -83,7 +83,7 @@ if __name__ == "__main__":
         '-w', '--windowlength', type='float', default=32,
         help='windows length (ms)')
     optparser.add_option(
-        '-f', '--framelength', type='float', default=15,
+        '-f', '--framelength', type='float', default=10,
         help='frame shift (ms)')
     optparser.add_option(
         '-d', '--datadir', type='string', default='data',
