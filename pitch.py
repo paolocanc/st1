@@ -83,7 +83,7 @@ if __name__ == "__main__":
         '-w', '--windowlength', type='float', default=32,
         help='windows length (ms)')
     optparser.add_option(
-        '-f', '--framelength', type='float', default=10,
+        '-f', '--framelength', type='float', default=15,
         help='frame shift (ms)')
     optparser.add_option(
         '-d', '--datadir', type='string', default='data',
