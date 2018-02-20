@@ -13,7 +13,7 @@ from scipy.signal import correlate
 __author__ = "Jose A. R. Fonollosa"
 
 
-def autocorr_method(frame, rate):
+def autocorr_method(frame, sfreq):
     """Estimate pitch using autocorrelation
     """
     defvalue = (0.0, 1.0)
@@ -42,9 +42,9 @@ def autocorr_method(frame, rate):
     # Find the next peak
     peak = np.argmax(corr[rmin1:]) + rmin1
     rmax = corr[peak]/corr[0]
-    f0 = rate / peak
+    f0 = sfreq / peak
 
-    if rmax > 0.6 and f0 > 50 and f0 < 550:
+    if rmax > 0.6 and f0 > 50 and f0 < 400:
         return f0
     else:
         return 0;
@@ -59,16 +59,18 @@ def wav2f0(options, gui):
             filename = os.path.join(options.datadir, line + ".wav")
             f0_filename = os.path.join(options.datadir, line + ".f0")
             print("Processing:", filename, '->', f0_filename)
-            rate, data = wavfile.read(filename)
+            sfreq, data = wavfile.read(filename)
             with open(f0_filename, 'wt') as f0file:
                 nsamples = len(data)
 
                 # From miliseconds to samples
-                ns_windowlength = int(round((options.windowlength * rate) / 1000))
-                ns_framelength = int(round((options.framelength * rate) / 1000))
-                for ini in range(0, nsamples - ns_windowlength + 1, ns_framelength):
-                    frame = data[ini:ini+ns_windowlength]
-                    f0 = autocorr_method(frame, rate)
+                ns_windowlength = int(round((options.windowlength * sfreq) / 1000))
+                ns_frameshift = int(round((options.frameshift * sfreq) / 1000))
+                for ini in range(-ns_windowlength//2, nsamples - ns_windowlength//2, ns_frameshift):
+                    first_sample = max(0, ini)
+                    last_sample = min(nsamples, ini + ns_windowlength)
+                    frame = data[first_sample:last_sample]
+                    f0 = autocorr_method(frame, sfreq)
                     print(f0, file=f0file)
 
 
@@ -83,7 +85,7 @@ if __name__ == "__main__":
         '-w', '--windowlength', type='float', default=32,
         help='windows length (ms)')
     optparser.add_option(
-        '-f', '--framelength', type='float', default=15,
+        '-f', '--frameshift', type='float', default=15,
         help='frame shift (ms)')
     optparser.add_option(
         '-d', '--datadir', type='string', default='data',
