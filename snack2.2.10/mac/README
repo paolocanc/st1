@@ -9,7 +9,7 @@ installed.
 
 Change directory to unix/ and type
 
-./configure --with-tcl=/Library/Frameworks/Tcl.framework --with-tk=/Library/Frameworks/Tk.framework
+./configure --with-tcl=/System/Library/Frameworks/Tcl.framework --with-tk=/System/Library/Frameworks/Tk.framework
 
 Edit the Makefile and specify the Tcl include file directory as
 
