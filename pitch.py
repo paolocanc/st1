@@ -66,7 +66,8 @@ def wav2f0(options, gui):
                 # From miliseconds to samples
                 ns_windowlength = int(round((options.windowlength * sfreq) / 1000))
                 ns_frameshift = int(round((options.frameshift * sfreq) / 1000))
-                for ini in range(-ns_windowlength//2, nsamples - ns_windowlength//2, ns_frameshift):
+                ns_padding = int(round((options.padding * sfreq) / 1000))
+                for ini in range(-ns_padding, nsamples - ns_windowlength + ns_padding + 1, ns_frameshift):
                     first_sample = max(0, ini)
                     last_sample = min(nsamples, ini + ns_windowlength)
                     frame = data[first_sample:last_sample]
@@ -87,6 +88,9 @@ if __name__ == "__main__":
     optparser.add_option(
         '-f', '--frameshift', type='float', default=15,
         help='frame shift (ms)')
+    optparser.add_option(
+        '-p', '--padding', type='float', default=16,
+        help='zero padding (ms)')
     optparser.add_option(
         '-d', '--datadir', type='string', default='data',
         help='data folder')
