@@ -9,9 +9,9 @@ The objective of this assignment is the analysis of basic properties of the spee
 ## Assignment ##
 
 * Select at least two algorithms for pitch estimation and voicing detection.
-* Implement the selected methods in any language (C++, python or MATLAB) and compare their performance on the FDA-UE database. You can use the provided *pitch.py* and *test.sh* scripts as starting point or reference. The *pitch.py* script uses a basic algorithm based on the autocorrelation to compute the pitch, while the *test.sh* script shows how to evaluate the performance of a method.
+* Implement the selected methods in any language (C++, python or MATLAB) and compare their performance on the FDA-UE database. You can use the provided [pitch.py](pitch.py) and [test.sh](test.sh) scripts as starting point or reference. The [pitch.py](pitch.py) script uses a basic algorithm based on the autocorrelation to compute the pitch, while the [test.sh](test.sh) script shows how to evaluate the performance of a method.
 * Try to improve the results with the use of standard pre- and post-processing methods, new algorithms, a combination of systems, parameter tuning or machine learning algorithms. Optionally, you can use the large PTDB-TUB database for tuning and training and keep the FDA-UE database just for the final evaluation.
-* Use the provided C++ *pitch_compare* program to report the results as v/uv errors, uv/v errors, gross pitch errors (>20%) and MSE (Mean Squared Error) of the relative fine pitch errors. (See the *test.sh* script)
+* Use the provided C++ [pitch_compare](pitch_compare.cpp) program to report the results as v/uv errors, uv/v errors, gross pitch errors (>20%) and MSE (Mean Squared Error) of the relative fine pitch errors. (See the [test.sh](test.sh) script)
 * Report the results of the assignment using a 4-pages paper format. You can use, for instance, the templates in http://www.icassp2016.com/papers/PaperKit.html#Templates. In the report you have to briefly describe the selected algorithms and initial source code including the corresponding references. Then you have to mention your experiments or original contributions and the obtained results.
 * Upload the complete source code to a git repository (as github) and provide a link to it in the report.
 
@@ -29,7 +29,7 @@ The Pitch Tracking Database from Graz University of Technology (PTDB-TUG) is a s
 
 For each .wav file, your program should output a text file with extension .f0 and a line every 15 milliseconds (FDA-UE) or 10 milliseconds (PTDB-TUG), indicating the fundamental frequency in Hz. If the segment is unvoiced, you must write a line with a ’0’.
 
-You can use the provided *pitch.py* python script as a starting point or reference. The program *pitch.py* need an argument: FILELIST (a file with the list of files to process without the .wav extension and it has four options:
+You can use the provided [pitch.py](pitch.py) python script as a starting point or reference. The program [pitch.py](pitch.py) need an argument: FILELIST (a file with the list of files to process without the .wav extension and it has four options:
 
 ```
 Usage: python3 pitch.py [OPTION]... FILELIST
@@ -56,7 +56,7 @@ python3 pitch.py -p 0 -f 10 ptdb_tug.gui
 ```
 
 ## Evaluation ##
-Once you have all the files with the detected pitch, (extension .f0) in the same directory as the reference files (extension .f0ref), you can execute the *pitch_compare* program to evaluate your method.
+Once you have all the files with the detected pitch, (extension .f0) in the same directory as the reference files (extension .f0ref), you can execute the [pitch_compare](pitch_compare.cpp) program to evaluate your method.
 
 After compiling the program:
 ```
