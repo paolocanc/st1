@@ -44,7 +44,7 @@ def autocorr_method(frame, sfreq):
     rmax = corr[peak]/corr[0]
     f0 = sfreq / peak
 
-    if rmax > 0.6 and f0 > 50 and f0 < 400:
+    if rmax > 0.5 and f0 > 50 and f0 < 400:
         return f0
     else:
         return 0;
