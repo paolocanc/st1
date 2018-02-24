@@ -1,8 +1,0 @@
-unix/Makefile
-unix/config.log
-unix/config.status
-unix/libsnack.dylib
-unix/libsnackstub2.2.a
-unix/libsound.dylib
-unix/pkgIndex.tcl
-unix/snackConfig.sh
