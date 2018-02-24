@@ -80,6 +80,17 @@ This program calculates, for each file:
 
 It also provides a summary with the average over all files.
 
+### Example ###
+```
+./pitch_compare fda_ue.gui
+
+### Summary
+Num. frames:	22140 = 13916 unvoiced + 8224 voiced
+Unvoiced frames as voiced:	309/13916 (2.2%)
+Voiced frames as unvoiced:	1661/8224 (20%)
+Gross voiced errors (+20%):	30/6563 (0.46%)
+MSE of fine errors:	2%
+```
 
 ## Source code license ##
 * The source code of this project is licensed under the terms of the MIT license
