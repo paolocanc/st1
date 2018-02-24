@@ -16,7 +16,6 @@ __author__ = "Jose A. R. Fonollosa"
 def autocorr_method(frame, sfreq):
     """Estimate pitch using autocorrelation
     """
-    defvalue = (0.0, 1.0)
 
     # Calculate autocorrelation using scipy correlate
     frame = frame.astype(np.float)
@@ -37,7 +36,7 @@ def autocorr_method(frame, sfreq):
     if len(rmin) > 0:
         rmin1 = rmin[0]
     else:
-        return defvalue
+        return 0
 
     # Find the next peak
     peak = np.argmax(corr[rmin1:]) + rmin1
