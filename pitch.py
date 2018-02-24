@@ -24,7 +24,7 @@ def autocorr_method(frame, sfreq):
     if amax > 0:
         frame /= amax
     else:
-        return defvalue
+        return 0
 
     corr = correlate(frame, frame)
     # keep the positive part
