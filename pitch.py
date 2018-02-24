@@ -81,7 +81,7 @@ def main(options, args):
 if __name__ == "__main__":
     import optparse
     optparser = optparse.OptionParser(
-        usage='%prog [OPTION]... FILELIST\n' + __doc__)
+        usage='python3 %prog [OPTION]... FILELIST\n' + __doc__)
     optparser.add_option(
         '-w', '--windowlength', type='float', default=32,
         help='windows length (ms)')
@@ -96,5 +96,10 @@ if __name__ == "__main__":
         help='data folder')
 
     options, args = optparser.parse_args()
+
+    if len(args) == 0:
+        print("No FILELIST provided")
+        optparser.print_help()
+        exit(-1)
 
     main(options, args)
